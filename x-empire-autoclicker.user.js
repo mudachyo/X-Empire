@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         X Empire Autoclicker
-// @version      1.1
+// @version      1.2
 // @author       mudachyo
 // @match        https://game.xempire.io/*
 // @grant        none
@@ -40,6 +40,7 @@ function createInfoElement() {
         infoEl.style.userSelect = 'none';
         infoEl.style.maxWidth = '200px';
         infoEl.style.wordWrap = 'break-word';
+        infoEl.style.display = 'block'; 
         document.body.appendChild(infoEl);
 
         let isDragging = false;
@@ -83,6 +84,7 @@ function createInfoElement() {
 function updateInfoElement(message) {
     const infoEl = createInfoElement();
     infoEl.textContent = message;
+    infoEl.style.display = 'block'; 
 }
 
 function startCountdown(duration) {
@@ -97,7 +99,7 @@ function startCountdown(duration) {
         if (remainingTime > 0) {
             requestAnimationFrame(updateCountdown);
         } else {
-            infoEl.style.display = 'none';
+            updateInfoElement('Autoclicker is working');
         }
     }
 
