@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         X Empire Autoclicker
-// @version      1.3
+// @version      1.4
 // @author       mudachyo
 // @match        https://game.xempire.io/*
 // @grant        none
@@ -455,6 +455,21 @@ function findEnergyElement() {
     return document.querySelector("#routerWrapper > div > div.energyBar.fixedBottom > span > div > div:nth-child(2)");
 }
 
+function parseEnergy(energyText) {
+    energyText = energyText.replace(/\s/g, '');
+    if (energyText.includes('K')) {
+        return parseFloat(energyText.replace('K', '')) * 1000;
+    } else if (energyText.includes('M')) {
+        return parseFloat(energyText.replace('M', '')) * 1000000;
+    } else if (energyText.includes('B')) {
+        return parseFloat(energyText.replace('B', '')) * 1000000000;
+    } else if (energyText.includes('T')) {
+        return parseFloat(energyText.replace('T', '')) * 1000000000000;
+    } else {
+        return parseInt(energyText.replace(/,/g, ''));
+    }
+}
+
 function autoclicker() {
     if (isAutoclickerPaused) {
         return;
@@ -492,8 +507,8 @@ function autoclicker() {
     }
 
     var energyText = energyEl.textContent.trim();
-    var energy = parseInt(energyText.replace(/,/g, ''));
-    if (energy <= 25) {
+    var energy = parseEnergy(energyText);
+    if (energy <= 500) {
         const pauseDuration = getRandomDelay(GAME_SETTINGS.minPauseDuration, GAME_SETTINGS.maxPauseDuration);
         const pauseSeconds = Math.floor(pauseDuration / 1000);
         console.log(`Низкая энергия (${energy}), пауза на ${pauseSeconds} секунд.`);
