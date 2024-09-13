@@ -47,7 +47,11 @@
 >
 > - [Not Pixel + Autoclicker](https://github.com/mudachyo/Not-Pixel)
 >
-> - [X Empire + Autoclicker](https://github.com/mudachyo/X-Empire)
+> - [X-Empire + Autoclicker](https://github.com/mudachyo/X-Empire)
+>
+> - [Tomarket](https://github.com/mudachyo/Tomarket)
+>
+> - [xKuCoin + Autoclicker](https://github.com/mudachyo/xKuCoin)
 ---
 > [!IMPORTANT] 
 > Пожертвование
